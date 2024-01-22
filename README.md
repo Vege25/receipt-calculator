@@ -1,31 +1,29 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 # receipt-calculator
+## Idea
+This app scans your shop receipt, get's all bought item's prices and total price.
+User can split the payments for each bought item with partner.
+## *IMPORTANT* Works on only finnish receipts
+
+## Example
+George and Mary wants to calculate the receipt.
+George bought milk and half of the chicken.
+Mary bought half of the chicken and juice.
+
+RECEIPT:
+Milk 1,0€ (George)
+Chicken 3,0€ (George, Mary)
+Juice 1,0€ (Mary)
+
+Total: 5,0€
+
+Then calculator calculates Georges part of the receipt
+1,0 + (3,0 / 2) = 2,5
+
+Then calculator calculates Marys part of the receipt
+5,0 - 2,5 = 2,5 (5,0 as the total)
+
+App informs user about the cost
+
+## Potential errors
+- If scanning fails -> inform user that receipt is unvalid
+- If Prices does not match total -> inform user to check the prices and modify
